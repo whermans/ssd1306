@@ -6,7 +6,7 @@ static struct SSD1306_VARS{
   int8_t DC;
   int8_t RST;
   int8_t CS;
-};
+} vars;
 
 static uint8_t buffer[DISPY * DISPX / 8]{
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -75,8 +75,17 @@ static uint8_t buffer[DISPY * DISPX / 8]{
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-void init(int8_t SID, int8_t SCLK, int8_t DC, int8_t RST, int8_t CS);
-void begin(uint8_t switchvcc, uint8_t i2caddr, int reset);
+void init(int8_t SID, int8_t SCLK, int8_t DC, int8_t RST, int8_t CS){
+  vars.SID = SID;
+  vars.SCLK = SCLK;
+  vars.DC = CD;
+  vars.RST = RST;
+  vars.CS = CS;
+}
+
+void begin(uint8_t switchvcc, uint8_t i2caddr, int reset){
+  
+}
 
 void command(uint8_t command);
 void data(uint8_t data);
